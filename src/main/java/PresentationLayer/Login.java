@@ -30,4 +30,5 @@ public class Login extends Command {
         return user.getRole() + "page";
     }
 
+
 }

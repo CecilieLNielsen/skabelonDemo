@@ -1,0 +1,12 @@
+Opgave til mandag.
+Prøv kræfter med følgende opgave, så vi har noget at snakket om på mandag.
+
+Lav en side “oversigt.jsp” som kun kan nåes fra employersiden. Her kunne jeg godt tænke mig at få en oversigt over alle kunderne (søg på jstl foreach). Jeg kunne også godt tænke mig at man kunne se antallet af kunder.
+
+Lav en form evt. på employee.jsp eller på en side som kun kan nåes derfra, hvor man kan oprette nye employees
+
+Lav det sådan at man som medarbejder kan slette en kunde.
+
+Lav det sådan at man som medarbejder kan nulstille/ændre en kundes kodeord over telefonen.
+
+Lav en knap på alle siderne, hvor man kan logge ud. Her skal man sendes tilbage til index siden, og ens session skal nedlægges.

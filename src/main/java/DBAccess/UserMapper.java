@@ -62,7 +62,7 @@ public class UserMapper {
     public static ArrayList<String> oversigt() throws OversigtException {
         try {
             Connection con = Connector.connection();
-            String SQL = "SELECT email FROM useradmin.users";
+            String SQL = "SELECT email FROM useradmin.users where role = 'customer'";
             PreparedStatement ps = con.prepareStatement( SQL );
 
             ResultSet rs = ps.executeQuery();
@@ -79,4 +79,72 @@ public class UserMapper {
             throw new OversigtException(ex.getMessage());
         }
     }
+
+    public static void createEmployee( User user ) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "INSERT INTO Users (email, password, role) VALUES (?, ?, ?)";
+            PreparedStatement ps = con.prepareStatement( SQL, Statement.RETURN_GENERATED_KEYS );
+            ps.setString( 1, user.getEmail() );
+            ps.setString( 2, user.getPassword() );
+            ps.setString( 3, user.getRole() );
+            ps.executeUpdate();
+            ResultSet ids = ps.getGeneratedKeys();
+            ids.next();
+            int id = ids.getInt( 1 );
+            user.setId( id );
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new LoginSampleException( ex.getMessage() );
+        }
+    }
+
+    public static ArrayList<String> userEmailsEmployee () throws OversigtException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT email FROM useradmin.users where role = 'employee'";
+            PreparedStatement ps = con.prepareStatement( SQL );
+
+            ResultSet rs = ps.executeQuery();
+            ArrayList<String> userEmailsEmployee = new ArrayList<>();
+            while ( rs.next() ) {
+                String email = rs.getString( "email" );
+
+                userEmailsEmployee.add(email);
+            }
+
+            return userEmailsEmployee;
+
+        } catch ( ClassNotFoundException | SQLException ex ) {
+            throw new OversigtException(ex.getMessage());
+        }
+    }
+
+    public static void deleteCustomer( String email ) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "DELETE from Users where email=? and role='customer' ";
+            PreparedStatement ps = con.prepareStatement( SQL);
+            ps.setString( 1, email );
+            ps.executeUpdate();
+
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new LoginSampleException( ex.getMessage() );
+        }
+    }
+
+    public static void changePasswordCustomer( String email, String password ) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "Update Users set password = ? where email = ?";
+            PreparedStatement ps = con.prepareStatement( SQL);
+            ps.setString(1, password);
+            ps.setString( 2, email);
+            ps.executeUpdate();
+
+        } catch ( SQLException | ClassNotFoundException ex ) {
+            throw new LoginSampleException( ex.getMessage() );
+        }
+    }
+
+
 }

@@ -21,5 +21,18 @@
 
 
         You are now logged in as a customer of our wonderful site.
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <form name="logOut" action="FrontController" method="POST">
+            <input type="hidden" name="taget" value="logOut">
+            <input type="submit" value="Log out">
+        </form>
     </body>
 </html>

@@ -53,7 +53,7 @@
         <form name="oversigt" action="FrontController" method="POST">
             <input type="hidden" name="taget" value="oversigt">
 
-            <input type="submit" value="Hent oversigt">
+            <input type="submit" value="Show costumers">
         </form>
 
 

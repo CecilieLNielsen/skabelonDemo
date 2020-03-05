@@ -17,6 +17,10 @@ public class User {
     private String password; // Should be hashed and secured
     private String role;
 
+    public User(String email) {
+
+    }
+
     public String getEmail() {
         return email;
     }

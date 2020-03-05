@@ -16,6 +16,11 @@ abstract class Command {
         commands.put( "login", new Login() );
         commands.put( "register", new Register() );
         commands.put( "oversigt", new Oversigt() );
+        commands.put("createEmployee", new createEmployee());
+        commands.put("OversigtEmployee", new OversigtEmployee());
+        commands.put("deleteCustomer", new deleteCustomer());
+        commands.put("changePasswordCustomer", new changePasswordCustomer());
+        commands.put("logOut", new logOut());
     }
 
     static Command from( HttpServletRequest request ) {

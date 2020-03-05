@@ -27,8 +27,27 @@ public class LogicFacade {
 
     public static User createEmployee( String email, String password ) throws LoginSampleException {
         User user = new User(email, password, "employee");
-        UserMapper.createUser( user );
+        UserMapper.createEmployee( user );
         return user;
     }
+
+    public static ArrayList<String> userEmailsEmployee() throws OversigtException {
+        return UserMapper.userEmailsEmployee();
+
+    }
+
+    public static void deleteCustomer( String email ) throws LoginSampleException {
+       // User user = new User(email);
+        UserMapper.deleteCustomer( email );
+        //return user;
+    }
+
+    public static void changePasswordCustomer(String email, String password) throws LoginSampleException {
+        //User user = new User(email, password, "customer");
+        UserMapper.changePasswordCustomer(email, password);
+        //return user;
+    }
+
+
 
 }

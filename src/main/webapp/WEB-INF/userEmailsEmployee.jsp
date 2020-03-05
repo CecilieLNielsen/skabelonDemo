@@ -1,21 +1,20 @@
 <%--
   Created by IntelliJ IDEA.
   User: cecilie
-  Date: 04/03/2020
-  Time: 12.48
+  Date: 05/03/2020
+  Time: 11.32
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Costumer overview</title>
+    <title>Employee overwiew</title>
 </head>
 <body>
-<h1>Costumer overview</h1>
+<h1>Employee overview: </h1>
 
-
-<c:forEach var="element" items="${sessionScope.emails}">
+<c:forEach var="element" items="${sessionScope.userEmails}">
 
     ${element}
     <br>
@@ -23,7 +22,7 @@
 
 </c:forEach>
 
-<p>Number of customers: ${sessionScope.emailCount}</p>
+<p>Number of employees: ${sessionScope.userEmailCount}</p>
 
 
 <form name="logOut" action="FrontController" method="POST">
